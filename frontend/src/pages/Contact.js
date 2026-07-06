@@ -38,7 +38,7 @@ function Contact() {
     // }
 
     const axiosFetchData = async(processing) => {
-        await axios.get('http://localhost:4000/users')
+        await axios.get(`${process.env.REACT_APP_API_URL}/users`)
         .then(res => {
             if (processing) {
                 setSelectData(res.data)
@@ -54,7 +54,7 @@ function Contact() {
             message: message
         }
 
-        await axios.post('http://localhost:4000/contact/send', postData)
+        await axios.post(`${process.env.REACT_APP_API_URL}/contact/send`, postData)
         .then(res => setError(<p className="success">{res.data}</p>))
     }
 
